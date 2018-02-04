@@ -4,7 +4,7 @@ metadata:
   name: neo4j-core
 spec:
   serviceName: neo4j
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -19,7 +19,7 @@ spec:
           - name: NEO4J_dbms_mode
             value: CORE
           - name: NUMBER_OF_CORES
-            value: "2"
+            value: "3"
           - name: NEO4J_dbms_security_auth__enabled
             value: "false"
           - name: NEO4J_causal__clustering_discovery__type
