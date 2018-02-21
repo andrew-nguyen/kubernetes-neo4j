@@ -1,1 +1,1 @@
-kubectl port-forward neo4j-core-0 8474:7474 8687:7687
+kubectl port-forward neo4j-core-0 7474:7474 7687:7687
