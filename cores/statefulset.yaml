@@ -24,6 +24,8 @@ spec:
             value: "false"
           - name: NEO4J_causal__clustering_discovery__type
             value: DNS
+          - name: NEO$J_causal__clustering_expected__core__cluster__size
+            value: "3"
           - name: NEO4J_causal__clustering_initial__discovery__members
             value: "neo4j.default.svc.cluster.local:5000"
           - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
@@ -53,15 +55,18 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-        - name: datadir
+        - name: pv
           mountPath: "/data"
   volumeClaimTemplates:
     - metadata:
-        name: datadir
+        name: pv
       spec:
         accessModes:
           - ReadWriteOnce
         storageClassName: "standard"
+        selector:
+          matchLabels:
+            app: "neo4j"
         resources:
           requests:
-            storage: "2Gi"
+            storage: "10Gi"
